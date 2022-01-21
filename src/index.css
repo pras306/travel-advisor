@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'ROBOTO REGULAR';
+    src: url('./assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ROBOTO BOLD';
+    src: url('./assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ROBOTO THIN';
+    src: url('./assets/fonts/Roboto/Roboto-Thin.ttf') format('truetype');
+}
+
+:root {
+    --ff-roboto-regular: 'ROBOTO REGULAR';
+    --ff-roboto-bold: 'ROBOTO BOLD';
+    --ff-roboto-thin: 'ROBOTO THIN';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+  }
+  

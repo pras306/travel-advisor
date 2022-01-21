@@ -1,0 +1,32 @@
+.map {
+    height: 85vh;
+    width: 100%;
+    padding: 1.1em;
+}
+
+.map__place {
+    position: absolute;
+    transform: translate(-50%, 50%);
+    z-index: 1;
+}
+
+.map__place:hover {
+    z-index: 2;
+}
+
+.map__place__paper {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100px;
+}
+
+.map__place__paper > span {
+    font-family: var(--ff-roboto-regular);
+    font-size: 0.75rem;
+}
+
+.map__place__paper > img {
+    cursor: pointer;
+}

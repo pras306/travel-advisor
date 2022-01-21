@@ -1,0 +1,32 @@
+.place-details {
+    padding: 0.5em;
+}
+
+.place-details > h2 {
+    font-family: var(--ff-roboto-bold);
+}
+
+.place-details__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em;
+}
+
+.place-details__content > span {
+    font-family: var(--ff-roboto-regular);
+}
+
+.place-details__chips {
+    margin: 0.5em;
+    padding: 0.5em;
+    font-family: var(--ff-roboto-regular);
+}
+
+.place-details__address {
+    color: #808080;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em;
+}
