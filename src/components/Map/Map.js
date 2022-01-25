@@ -4,27 +4,26 @@ import { Paper } from '@material-ui/core';
 // import LocationOnOutlinedIcon from '@material-ui/icons/LocationOutlined';
 
 import './Map.css';
+import mapStyles from './mapStyles';
 
-const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
+const Map = ({ coordinates, setCoordinates, setBounds, setChildClicked, places, weatherData }) => {
 
     return (
         <div className='map'>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: 'AIzaSyAhNRH9-BAwVRwR-ZyaBw2KUPqiPgCBnrs'}}
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY}}
                 defaultCenter={coordinates}
                 center={coordinates}
                 defaultZoom={14}
                 margin={[50, 50, 50, 50]}
-                options={''}
+                options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
                 onChange={(e) => {
-                    console.log(e);
                     setCoordinates({ lat: e.center.lat, lng: e.center.lng });
                     setBounds({ sw: e.marginBounds.sw, ne: e.marginBounds.ne });
                 }}
-                onChildClick={''}
             >
                 {places?.map((place, idx) => (
-                    <div className='map__place' lat={Number(place.latitude)} lng={Number(place.longitude)} key={idx}>
+                    <div className='map__place' lat={Number(place.latitude)} lng={Number(place.longitude)} key={idx} onClick={() => setChildClicked(idx)} >
                         <Paper elevation={3} className='map__place__paper'>
                             <span>{place.name}</span>
                             <img 
@@ -32,6 +31,11 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
                                 alt={place.name}
                             />
                         </Paper>
+                    </div>
+                ))}
+                {weatherData?.list?.map((data, i) => (
+                    <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
+                        <img height={100} src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} />
                     </div>
                 ))}
             </GoogleMapReact>

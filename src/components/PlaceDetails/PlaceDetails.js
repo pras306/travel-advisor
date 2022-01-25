@@ -6,7 +6,9 @@ import Rating from '@material-ui/lab/Rating';
 
 import './PlaceDetails.css';
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, refProp, isSelected }) => {
+
+    if(isSelected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
     const renderPlaceCard = () => {
         if(place.name){
@@ -63,7 +65,7 @@ const PlaceDetails = ({ place }) => {
     }
 
     return (
-        <div className='place-details'>
+        <div className='place-details' ref={refProp}>
             {renderPlaceCard()}
         </div>
     );

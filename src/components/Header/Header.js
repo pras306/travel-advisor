@@ -1,11 +1,24 @@
-import React from 'react';
-// import { Autocomplete } from '@react-google-maps/api';
+import React, { useState } from 'react';
+import { Autocomplete } from '@react-google-maps/api';
 import { InputBase } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 import './Header.css';
 
-const Header = () => {
+const Header = ({ setCoordinates }) => {
+    const [ autoComplete, setAutoComplete ] = useState(null);
+
+    const onLoad = (autoC) => setAutoComplete(autoC);
+
+    const onPlaceChanged = () => {
+        const lat = autoComplete.getPlace().geometry.location.lat();
+        const lng = autoComplete.getPlace().geometry.location.lng();
+
+        console.log({ lat, lng });
+
+        setCoordinates({ lat, lng });
+    }
+
     return (
         <div className='header'>
             <div className='header__toolbar'>
@@ -17,36 +30,16 @@ const Header = () => {
                 <span>
                     Explore new places
                 </span>
-                {/* <Autocomplete> */}
+                <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
                     <div className='header__box__search'>
                         <div className='header__box__search__icon'>
                             <SearchIcon />
                         </div>
                         <InputBase placeholder='Search...' className='header__box__search__input'></InputBase>
                     </div>
-                {/* </Autocomplete> */}
+                </Autocomplete>
             </div>
         </div>
-        // <AppBar position='static'>
-        //     <Toolbar className='toolbar'>
-        //         <Typography variant='h5' className='title'>
-        //             Travel Advisor
-        //         </Typography>
-        //         <div className='box'>
-        //             <Typography variant='h6' className='title'>
-        //                 Explore new places
-        //             </Typography>
-        //             {/* <Autocomplete> */}
-        //                 <div className='search'>
-        //                     <div className='search__icon'>
-        //                         <SearchIcon />
-        //                     </div>
-        //                     <InputBase placeholder='Search...' className='search__input'></InputBase>
-        //                 </div>
-        //             {/* </Autocomplete> */}
-        //         </div>
-        //     </Toolbar>
-        // </AppBar>
     );
 };
 
