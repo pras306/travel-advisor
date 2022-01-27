@@ -28,7 +28,7 @@ This is a travel advisor web app that list popular nearby places and weather dat
 
 ## How To Use
 
-The website is published at [Travel Advisor]
+The website is published at [Travel Advisor](https://travel-guide-2022.netlify.app/)
 
 Clone the project 
 
