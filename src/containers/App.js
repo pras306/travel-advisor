@@ -21,17 +21,19 @@ const App = () => {
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((location) => {
             setCoordinates({ lat: location.coords.latitude, lng: location.coords.longitude });
-        })
+        });
     }, []);
 
     useEffect(() => {
         const filteredList = places.filter(place => place.rating > rating);
+        
         setFilteredPlaces(filteredList);
+        setChildClicked(null);
     }, [rating])
 
     useEffect(() => {
+        setIsLoading(true);
         if(bounds.sw && bounds.ne){
-            setIsLoading(true);
 
             getWeatherData(coordinates.lat, coordinates.lng)
             .then(data => {
@@ -44,9 +46,11 @@ const App = () => {
             });
 
             setFilteredPlaces([]);
-            setIsLoading(false);
+            setChildClicked(null);
         }
+        setIsLoading(false);
     }, [bounds, listOption]);
+
 
     return (
         <>
@@ -57,11 +61,11 @@ const App = () => {
                     <List 
                         places={filteredPlaces.length ? filteredPlaces : places} 
                         childClicked={childClicked} 
-                        isLoading={isLoading}
                         listOption={listOption}
                         setListOption={setListOption}
                         rating={rating}
                         setRating={setRating}
+                        isLoading={isLoading}
                     />
                 </Grid>
                 <Grid item xs={12} md={8}>
@@ -75,7 +79,6 @@ const App = () => {
                     />
                 </Grid>
             </Grid>
-            
         </>
     );
 };
