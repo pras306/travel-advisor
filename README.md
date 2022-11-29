@@ -61,7 +61,7 @@ Start the server
 - [Travel Advisor Rapid API](https://rapidapi.com/apidojo/api/travel-advisor/)
 - [Open Weather Map Rapid API](https://rapidapi.com/community/api/open-weather-map/)
 - [Google Maps API](https://developers.google.com/maps)
-- Custom Proxy Server for hiding API key - [https://backend-portfolio-proxy.herokuapp.com/api/v1](https://backend-portfolio-proxy.herokuapp.com/api/v1)
+- Custom Proxy Server for hiding API key - [https://api-proxy-server.up.railway.app/api/v1](https://api-proxy-server.up.railway.app/api/v1)
 
 #### GET place details
 

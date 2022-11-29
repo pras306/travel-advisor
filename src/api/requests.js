@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const RAPID_API_BASE_URL =  process.env.NODE_ENV === "production" ? "https://backend-portfolio-proxy.herokuapp.com/api/v1" : "http://localhost:5000/api/v1";
+const RAPID_API_BASE_URL =  process.env.NODE_ENV === "production" ? "https://api-proxy-server.up.railway.app/api/v1" : "http://localhost:5000/api/v1";
 
 export const getPlacesData = async (listOption, ne, sw) => {
   try{
